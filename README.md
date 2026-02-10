@@ -352,7 +352,7 @@ backend/firebase/serviceAccountKey.json
 ## ▶️ Start the Backend Server
 
 ```bash
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 Backend runs at:

@@ -5,12 +5,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD8kKjry60C0oN-X3Bs3MFZADdS1Mo19ME",
-  authDomain: "language-learning-app-3c330.firebaseapp.com",
-  projectId: "language-learning-app-3c330",
-  storageBucket: "language-learning-app-3c330.firebasestorage.app",
-  messagingSenderId: "153392863933",
-  appId: "1:153392863933:web:dff19dbb809e6ee24935d4"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
