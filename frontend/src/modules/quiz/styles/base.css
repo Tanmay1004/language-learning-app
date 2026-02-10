@@ -1,0 +1,96 @@
+/* Reset-ish */
+.quiz-root * { box-sizing: border-box; }
+
+.quiz-root {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.quiz-root img {
+  max-width: 100%;
+  display: block;
+}
+
+.quiz-root a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.quiz-root a:hover {
+  text-decoration: underline;
+}
+
+.quiz-root button {
+  font: inherit;
+}
+
+.quiz-root :focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .quiz-root * {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Layout helpers */
+.quiz-root .container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.quiz-root .page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px;
+  padding-top: calc(24px + 64px); /* offset for Toolpad AppBar */
+}
+
+.quiz-root .page-header {
+  margin-bottom: 16px;
+}
+
+.quiz-root .page-title {
+  margin: 0;
+  font-size: var(--fs-xl);
+  line-height: 1.2;
+}
+
+.quiz-root .page-sub {
+  margin: 6px 0 0 0;
+  color: var(--muted);
+}
+
+.quiz-root .breadcrumb {
+  color: #60a5fa;
+}
+
+/* Small anim utilities */
+.quiz-root .fade-in {
+  animation: fadeIn var(--t-mid) var(--ease) both;
+}
+
+.quiz-root .slide-up {
+  animation: slideUp var(--t-mid) var(--ease) both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

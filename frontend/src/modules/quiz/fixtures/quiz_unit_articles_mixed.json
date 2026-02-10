@@ -1,0 +1,126 @@
+{
+  "unit": { "id": "unit_articles_mixed", "title": "Articles: a / an / the (Mixed)" },
+  "questions": [
+    {
+      "id": "q_art_mix_01",
+      "order": 1,
+      "stem": "Choose the correct article: ___ apple a day keeps the doctor away.",
+      "choices": [
+        { "id": "c_art_mix_01_a", "text": "A" },
+        { "id": "c_art_mix_01_b", "text": "An" },
+        { "id": "c_art_mix_01_c", "text": "The" },
+        { "id": "c_art_mix_01_d", "text": "— (no article)" }
+      ],
+      "explanation": "Use 'an' before vowel sounds; 'apple' starts with a vowel sound."
+    },
+    {
+      "id": "q_art_mix_02",
+      "order": 2,
+      "stem": "I bought ___ umbrella because it was raining.",
+      "choices": [
+        { "id": "c_art_mix_02_a", "text": "a" },
+        { "id": "c_art_mix_02_b", "text": "an" },
+        { "id": "c_art_mix_02_c", "text": "the" },
+        { "id": "c_art_mix_02_d", "text": "— (no article)" }
+      ],
+      "explanation": "Before vowel sound 'um-', use 'an'."
+    },
+    {
+      "id": "q_art_mix_03",
+      "order": 3,
+      "stem": "___ sun rises in the east.",
+      "choices": [
+        { "id": "c_art_mix_03_a", "text": "A" },
+        { "id": "c_art_mix_03_b", "text": "An" },
+        { "id": "c_art_mix_03_c", "text": "The" },
+        { "id": "c_art_mix_03_d", "text": "— (no article)" }
+      ],
+      "explanation": "Use 'the' for unique nouns known universally (the sun, the moon)."
+    },
+    {
+      "id": "q_art_mix_04",
+      "order": 4,
+      "stem": "She is ___ honest person.",
+      "choices": [
+        { "id": "c_art_mix_04_a", "text": "a" },
+        { "id": "c_art_mix_04_b", "text": "an" },
+        { "id": "c_art_mix_04_c", "text": "the" },
+        { "id": "c_art_mix_04_d", "text": "— (no article)" }
+      ],
+      "explanation": "H is silent; vowel sound 'on-': use 'an'."
+    },
+    {
+      "id": "q_art_mix_05",
+      "order": 5,
+      "stem": "Pass me ___ salt, please.",
+      "choices": [
+        { "id": "c_art_mix_05_a", "text": "a" },
+        { "id": "c_art_mix_05_b", "text": "an" },
+        { "id": "c_art_mix_05_c", "text": "the" },
+        { "id": "c_art_mix_05_d", "text": "— (no article)" }
+      ],
+      "explanation": "Shared situational knowledge/definite reference: 'the salt' on the table."
+    },
+    {
+      "id": "q_art_mix_06",
+      "order": 6,
+      "stem": "He works as ___ engineer in Bengaluru.",
+      "choices": [
+        { "id": "c_art_mix_06_a", "text": "a" },
+        { "id": "c_art_mix_06_b", "text": "an" },
+        { "id": "c_art_mix_06_c", "text": "the" },
+        { "id": "c_art_mix_06_d", "text": "— (no article)" }
+      ],
+      "explanation": "Vowel sound 'en-': use 'an'."
+    },
+    {
+      "id": "q_art_mix_07",
+      "order": 7,
+      "stem": "She adopted ___ cat and ___ dog.",
+      "choices": [
+        { "id": "c_art_mix_07_a", "text": "a / a" },
+        { "id": "c_art_mix_07_b", "text": "an / a" },
+        { "id": "c_art_mix_07_c", "text": "the / the" },
+        { "id": "c_art_mix_07_d", "text": "— / —" }
+      ],
+      "explanation": "Consonant sound 'c' → 'a'; consonant sound 'd' → 'a'."
+    },
+    {
+      "id": "q_art_mix_08",
+      "order": 8,
+      "stem": "He is ___ best player in the team.",
+      "choices": [
+        { "id": "c_art_mix_08_a", "text": "a" },
+        { "id": "c_art_mix_08_b", "text": "an" },
+        { "id": "c_art_mix_08_c", "text": "the" },
+        { "id": "c_art_mix_08_d", "text": "— (no article)" }
+      ],
+      "explanation": "Superlatives take 'the' (the best, the tallest)."
+    },
+    {
+      "id": "q_art_mix_09",
+      "order": 9,
+      "stem": "We went to ___ cinema last night.",
+      "choices": [
+        { "id": "c_art_mix_09_a", "text": "a" },
+        { "id": "c_art_mix_09_b", "text": "an" },
+        { "id": "c_art_mix_09_c", "text": "the" },
+        { "id": "c_art_mix_09_d", "text": "— (no article)" }
+      ],
+      "explanation": "Specific, shared experience → 'the cinema' (definite)."
+    },
+    {
+      "id": "q_art_mix_10",
+      "order": 10,
+      "stem": "Mount Everest is ___ highest mountain in the world.",
+      "choices": [
+        { "id": "c_art_mix_10_a", "text": "a" },
+        { "id": "c_art_mix_10_b", "text": "an" },
+        { "id": "c_art_mix_10_c", "text": "the" },
+        { "id": "c_art_mix_10_d", "text": "— (no article)" }
+      ],
+      "explanation": "Superlative: 'the highest'."
+    }
+  ],
+  "numQuestions": 10
+}

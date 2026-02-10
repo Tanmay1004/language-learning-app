@@ -1,0 +1,31 @@
+/* =========================
+   GLOBAL BASE (SAFE)
+   ========================= */
+
+/* Quiz-scoped base typography & color */
+.quiz-root {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #ffffff;
+}
+
+/* Scope visual theming to quiz app only */
+.quiz-root {
+  background-color: #0b1020;
+  min-height: 100%;
+}
+
+/* Links inside quiz only */
+.quiz-root a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+/* Buttons inside quiz only */
+.quiz-root button {
+  cursor: pointer;
+}
+
+/* Prevent content from hiding under dashboard top bar */
+.quiz-root {
+  padding-top: var(--dashboard-offset, 12px);
+}

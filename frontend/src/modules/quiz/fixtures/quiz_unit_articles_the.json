@@ -1,0 +1,78 @@
+{
+  "unit": { "id": "unit_articles_the", "title": "Using 'the'" },
+  "questions": [
+    {
+      "id": "q_art_the_01",
+      "order": 1,
+      "stem": "___ Pacific Ocean is the largest on Earth.",
+      "choices": [
+        { "id": "c_art_the_01_a", "text": "A" },
+        { "id": "c_art_the_01_b", "text": "An" },
+        { "id": "c_art_the_01_c", "text": "The" },
+        { "id": "c_art_the_01_d", "text": "— (no article)" }
+      ],
+      "explanation": "Use 'the' with oceans, seas, rivers, mountain ranges, etc."
+    },
+    {
+      "id": "q_art_the_02",
+      "order": 2,
+      "stem": "I loved ___ movie you recommended.",
+      "choices": [
+        { "id": "c_art_the_02_a", "text": "a" },
+        { "id": "c_art_the_02_b", "text": "an" },
+        { "id": "c_art_the_02_c", "text": "the" },
+        { "id": "c_art_the_02_d", "text": "— (no article)" }
+      ],
+      "explanation": "Specific/known reference → 'the'."
+    },
+    {
+      "id": "q_art_the_03",
+      "order": 3,
+      "stem": "She plays ___ piano very well.",
+      "choices": [
+        { "id": "c_art_the_03_a", "text": "a" },
+        { "id": "c_art_the_03_b", "text": "an" },
+        { "id": "c_art_the_03_c", "text": "the" },
+        { "id": "c_art_the_03_d", "text": "— (no article)" }
+      ],
+      "explanation": "Musical instruments often use 'the' in general statements."
+    },
+    {
+      "id": "q_art_the_04",
+      "order": 4,
+      "stem": "He visited ___ Louvre when he was in Paris.",
+      "choices": [
+        { "id": "c_art_the_04_a", "text": "a" },
+        { "id": "c_art_the_04_b", "text": "an" },
+        { "id": "c_art_the_04_c", "text": "the" },
+        { "id": "c_art_the_04_d", "text": "— (no article)" }
+      ],
+      "explanation": "Famous buildings/museums typically take 'the'."
+    },
+    {
+      "id": "q_art_the_05",
+      "order": 5,
+      "stem": "We took a boat along ___ Thames.",
+      "choices": [
+        { "id": "c_art_the_05_a", "text": "a" },
+        { "id": "c_art_the_05_b", "text": "an" },
+        { "id": "c_art_the_05_c", "text": "the" },
+        { "id": "c_art_the_05_d", "text": "— (no article)" }
+      ],
+      "explanation": "Rivers take 'the'."
+    },
+    {
+      "id": "q_art_the_06",
+      "order": 6,
+      "stem": "___ Earth orbits the Sun.",
+      "choices": [
+        { "id": "c_art_the_06_a", "text": "A" },
+        { "id": "c_art_the_06_b", "text": "An" },
+        { "id": "c_art_the_06_c", "text": "The" },
+        { "id": "c_art_the_06_d", "text": "— (no article)" }
+      ],
+      "explanation": "Unique celestial bodies (in this context) often take 'the Earth', 'the Sun'."
+    }
+  ],
+  "numQuestions": 6
+}

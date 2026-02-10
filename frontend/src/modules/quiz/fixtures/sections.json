@@ -1,0 +1,18 @@
+{
+  "sections": [
+    {
+      "id": "sec_articles",
+      "title": "Articles",
+      "description": "Indefinite and definite articles",
+      "order": 1,
+      "unitCount": 3
+    },
+    {
+      "id": "sec_nouns",
+      "title": "Nouns",
+      "description": "Countable, uncountable, and proper nouns",
+      "order": 2,
+      "unitCount": 2
+    }
+  ]
+}

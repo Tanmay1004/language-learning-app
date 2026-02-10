@@ -1,0 +1,74 @@
+# =========================
+# Secrets & credentials
+# =========================
+.env
+.env.*
+backend/firebase/serviceAccountKey.json
+
+# =========================
+# Python
+# =========================
+backend/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# =========================
+# Node / Frontend
+# =========================
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# =========================
+# Vosk & speech models
+# =========================
+backend/app/models/vosk-model-*/
+backend/app/models/*.zip
+
+# =========================
+# Audio / media files
+# =========================
+*.wav
+*.mp3
+*.ogg
+*.flac
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Misc
+# =========================
+coverage/
+
+# Firestore exports / backups
+firestore-dump/
+
+# =========================
+# Runtime temp files
+# =========================
+backend/app/tmp/
+
+# =========================
+# Generated datasets / logs
+# =========================
+backend/dataset/
+
+# =========================
+# Zip / archive files
+# =========================
+*.zip

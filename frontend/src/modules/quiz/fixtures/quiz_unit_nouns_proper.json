@@ -1,0 +1,66 @@
+{
+  "unit": { "id": "unit_nouns_proper", "title": "Proper Nouns" },
+  "questions": [
+    {
+      "id": "q_n_prop_01",
+      "order": 1,
+      "stem": "Choose the correctly capitalized sentence.",
+      "choices": [
+        { "id": "c_n_prop_01_a", "text": "i visited new delhi last summer." },
+        { "id": "c_n_prop_01_b", "text": "I visited New delhi last summer." },
+        { "id": "c_n_prop_01_c", "text": "I visited New Delhi last summer." },
+        { "id": "c_n_prop_01_d", "text": "I visited new delhi last summer." }
+      ],
+      "explanation": "Capitalize proper nouns: 'New Delhi'."
+    },
+    {
+      "id": "q_n_prop_02",
+      "order": 2,
+      "stem": "Which needs 'the'?",
+      "choices": [
+        { "id": "c_n_prop_02_a", "text": "I climbed Mount Everest." },
+        { "id": "c_n_prop_02_b", "text": "I visited Taj Mahal." },
+        { "id": "c_n_prop_02_c", "text": "He went to University of Mumbai." },
+        { "id": "c_n_prop_02_d", "text": "She swam in Pacific Ocean." }
+      ],
+      "explanation": "Famous buildings/rivers/seas often need 'the': the Taj Mahal, the University of Mumbai, the Pacific Ocean. Mount Everest does not take 'the'."
+    },
+    {
+      "id": "q_n_prop_03",
+      "order": 3,
+      "stem": "Pick the correct sentence (articles with proper nouns).",
+      "choices": [
+        { "id": "c_n_prop_03_a", "text": "The Rahul is my friend." },
+        { "id": "c_n_prop_03_b", "text": "Rahul is my friend." },
+        { "id": "c_n_prop_03_c", "text": "A Rahul is my friend." },
+        { "id": "c_n_prop_03_d", "text": "An Rahul is my friend." }
+      ],
+      "explanation": "Personal names typically take no article."
+    },
+    {
+      "id": "q_n_prop_04",
+      "order": 4,
+      "stem": "Choose the correctly capitalized title:",
+      "choices": [
+        { "id": "c_n_prop_04_a", "text": "the indian express" },
+        { "id": "c_n_prop_04_b", "text": "The Indian Express" },
+        { "id": "c_n_prop_04_c", "text": "The indian express" },
+        { "id": "c_n_prop_04_d", "text": "the Indian Express" }
+      ],
+      "explanation": "Newspaper titles capitalize all main words."
+    },
+    {
+      "id": "q_n_prop_05",
+      "order": 5,
+      "stem": "Select the correct sentence:",
+      "choices": [
+        { "id": "c_n_prop_05_a", "text": "He studies at the IIT Bombay." },
+        { "id": "c_n_prop_05_b", "text": "He studies at IIT Bombay." },
+        { "id": "c_n_prop_05_c", "text": "He studies at an IIT Bombay." },
+        { "id": "c_n_prop_05_d", "text": "He studies at a IIT Bombay." }
+      ],
+      "explanation": "Institution names used as proper nouns often take no article: IIT Bombay."
+    }
+  ],
+  "numQuestions": 5
+}

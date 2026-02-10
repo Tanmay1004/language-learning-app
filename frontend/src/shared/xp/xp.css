@@ -1,0 +1,181 @@
+:root{
+  /* ===== XP SYSTEM TOKENS ===== */
+
+  /* Surfaces & text */
+  --card:#121a2e;
+  --border:#243049;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+
+  /* Elevation */
+  --elev:0 8px 24px rgba(0,0,0,.25);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.25);
+
+  /* Typography */
+  --fs-xs:12px;
+  --fs-md:16px;
+
+  /* Motion */
+  --ease:cubic-bezier(.22,1,.36,1);
+  --t-mid:240ms;
+  --t-slow:320ms;
+
+  /* Gradients (XP identity) */
+  --grad-blue:linear-gradient(135deg,#60a5fa,#2563eb);
+  --grad-green:linear-gradient(135deg,#34d399,#16a34a);
+}
+
+
+/* =========================
+   XP BURST CHIP
+   ========================= */
+.xp-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--grad-blue);
+  color:white;
+  font-weight:700;
+  box-shadow: var(--elev);
+  animation:
+    xpPop var(--t-mid) var(--ease),
+    fadeOut .7s 2.6s var(--ease) forwards;
+}
+
+@keyframes xpPop {
+  from { transform:scale(.9); opacity:0 }
+  to   { transform:scale(1);  opacity:1 }
+}
+
+@keyframes fadeOut {
+  to { opacity:0; transform:translateY(-6px) }
+}
+
+
+/* =========================
+   LEVEL-UP BANNER
+   ========================= */
+.levelup{
+  position:fixed;
+  left:50%;
+  top:84px;
+  transform:translateX(-50%);
+  z-index:20;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:10px 14px;
+  border-radius:14px;
+
+  background: var(--grad-green);
+  color:#0b1020;
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow: var(--elev);
+
+  animation:
+    levelDrop var(--t-mid) var(--ease),
+    levelFade 1s 4.2s var(--ease) forwards;
+}
+
+.levelup__title{
+  font-weight:800;
+  letter-spacing:.3px;
+}
+
+.levelup__sub{
+  font-size: var(--fs-sm);
+  opacity:.85;
+}
+
+@keyframes levelDrop {
+  from { opacity:0; transform:translate(-50%,-8px) }
+  to   { opacity:1; transform:translate(-50%,0) }
+}
+
+@keyframes levelFade {
+  to { opacity:0; transform:translate(-50%,-10px) }
+}
+
+
+/* =========================
+   GLOBAL XP HUD
+   ========================= */
+.hud{
+  position: relative;
+  z-index: 15;
+
+  width: 150px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 10px;
+
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(6px);
+}
+
+.hud__top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:4px;
+}
+
+.hud__label{
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.hud__total{
+  font-size: 14px;      /* was fs-md (16px) */
+  line-height: 1.1;
+  font-weight:800;
+  color: #ffffff;
+}
+
+.hud__bar{
+  height:6px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  overflow:hidden;
+  background:#0e162d;
+}
+
+.hud__fill{
+  height:100%;
+  width:0%;
+  background: var(--grad-green);
+  transition: width var(--t-slow) var(--ease);
+}
+
+.hud__meta{
+  margin-top:4px;
+  display:flex;
+  justify-content:space-between;
+  font-size: 11px;  
+  color: var(--muted);
+}
+
+.hud__lvl{
+  font-weight:700;
+  color: var(--text);
+}
+
+.hud__count{
+  opacity:.9;
+}
+
+
+/* =========================
+   ACCESSIBILITY
+   ========================= */
+@media (prefers-reduced-motion: reduce){
+  .levelup{
+    animation:none;
+  }
+}

@@ -1,0 +1,62 @@
+.quiz-root{
+  --bs-body-font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --bs-body-color: inherit;
+  --bs-body-bg: transparent;
+
+  --bs-link-color: inherit;
+  --bs-link-hover-color: inherit;
+
+  --bs-border-color: transparent;
+  --bs-border-radius: 0;
+
+  --bs-primary: unset;
+  --bs-secondary: unset;
+  --bs-success: unset;
+  --bs-danger: unset;
+  --bs-warning: unset;
+  --bs-info: unset;
+
+  --bs-focus-ring-color: transparent;
+  --bs-focus-ring-width: 0;
+
+  --bs-box-shadow: none;
+  /* Palette */
+  --bg:#0b1020;
+  --card:#121a2e;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --border:#243049;
+  --blue:#2563eb;
+  --blue-600:#1d4ed8;
+  --green:#16a34a;
+  --red:#dc2626;
+  --amber:#d97706;
+
+  /* Elevation & ring */
+  --elev:0 8px 24px rgba(0,0,0,.25);
+  --ring:0 0 0 3px rgba(37,99,235,.35);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.25);
+
+  /* Radii & spacing */
+  --r-lg:12px;
+  --r-xl:16px;
+  --pad:16px;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,1,.36,1);
+  --t-fast:160ms;
+  --t-mid:240ms;
+  --t-slow:320ms;
+
+  /* Typography scale */
+  --fs-xs:12px;
+  --fs-sm:14px;
+  --fs-md:16px;
+  --fs-lg:18px;
+  --fs-xl:24px;
+  --fs-2xl:32px;
+
+  /* Accents (gradients) */
+  --grad-blue:linear-gradient(135deg,#60a5fa, #2563eb);
+  --grad-green:linear-gradient(135deg,#34d399,#16a34a);
+}

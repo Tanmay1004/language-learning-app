@@ -1,0 +1,23 @@
+{
+  "section": { "id": "sec_nouns", "title": "Nouns" },
+  "units": [
+    {
+      "id": "unit_nouns_countable",
+      "sectionId": "sec_nouns",
+      "title": "Countable vs Uncountable",
+      "description": "Basics and determiners",
+      "order": 1,
+      "questionCount": 6,
+      "passThreshold": 70
+    },
+    {
+      "id": "unit_nouns_proper",
+      "sectionId": "sec_nouns",
+      "title": "Proper Nouns",
+      "description": "Names and capitalization",
+      "order": 2,
+      "questionCount": 5,
+      "passThreshold": 70
+    }
+  ]
+}

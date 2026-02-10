@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+.badges {
+    margin: 0;
+    padding: 0;
+    margin-top: -20px;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: #FFFFCC;
+}
+
+.badges h1{
+    font-family: "Spicy Rice", serif;
+    color: #0066FF;
+    font-size: 3.5rem;
+}
+
+.badges h2{
+    font-family: "Noto Serif", serif;
+    color:#606060;
+    font-size: 2.5rem;
+}
+
+.badge{
+    width:10rem;
+    position: relative; /* Positioning context for the name */
+    transition: transform 0.3s ease; /* Smooth scaling */
+}
+
+
+.badges img{
+    width: 100%;
+}
+
+.badge:hover {
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+.locked .badge img{
+    filter: grayscale(100%); /* Makes the image grayscale */
+    opacity: 0.7; /* Reduces opacity for a disabled effect */
+}
+
+
+.badge-name {
+    position: absolute; /* Positioning the name */
+    bottom: -30px; /* Adjust according to your design */
+    left: 50%;
+    transform: translateX(-50%); /* Center the name */
+    color: white; /* Default color */
+    font-weight: bold; /* Make the text bold */
+    text-align: center;
+    font-size: 1.5rem; /* Increase font size */
+}
+
+
+.badge-seventh { color: #FFB800; } /* Color for 'Seven' */
+.badge-bronze { color: #CD7F32; } /* Color for 'Bronze' */
+.badge-silver { color: #C0C0C0; } /* Color for 'Silver' */
+.badge-leaf { color: #8B8C6A; } /* Color for 'Leaf' */
+.badge-gold { color: #FFD700; } /* Color for 'Gold' */
+.badge-platinum { color: #E5E4E2; } /* Color for 'Platinum' */
+.badge-diamond { color: #B9FBC0; } /* Color for 'Diamond' */
+.badge-horseshoe { color: #696969; } /* Color for 'Horseshoe' */

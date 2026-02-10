@@ -1,0 +1,32 @@
+{
+  "section": { "id": "sec_articles", "title": "Articles" },
+  "units": [
+    {
+      "id": "unit_articles_a_an",
+      "sectionId": "sec_articles",
+      "title": "Using 'a' and 'an'",
+      "description": "Basic rules",
+      "order": 1,
+      "questionCount": 6,
+      "passThreshold": 70
+    },
+    {
+      "id": "unit_articles_mixed",
+      "sectionId": "sec_articles",
+      "title": "Articles: a / an / the (Mixed)",
+      "description": "Mixed practice with rules & exceptions",
+      "order": 2,
+      "questionCount": 10,
+      "passThreshold": 70
+    },
+    {
+      "id": "unit_articles_the",
+      "sectionId": "sec_articles",
+      "title": "Using 'the'",
+      "description": "Specific reference, superlatives, uniques",
+      "order": 3,
+      "questionCount": 6,
+      "passThreshold": 70
+    }
+  ]
+}

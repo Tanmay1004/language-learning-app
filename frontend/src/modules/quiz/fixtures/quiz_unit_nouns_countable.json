@@ -1,0 +1,78 @@
+{
+  "unit": { "id": "unit_nouns_countable", "title": "Countable vs Uncountable" },
+  "questions": [
+    {
+      "id": "q_n_count_01",
+      "order": 1,
+      "stem": "Choose the correct option: We don’t have ___ milk left.",
+      "choices": [
+        { "id": "c_n_count_01_a", "text": "many" },
+        { "id": "c_n_count_01_b", "text": "much" },
+        { "id": "c_n_count_01_c", "text": "few" },
+        { "id": "c_n_count_01_d", "text": "a few" }
+      ],
+      "explanation": "Milk is uncountable → 'much milk'."
+    },
+    {
+      "id": "q_n_count_02",
+      "order": 2,
+      "stem": "There are ___ chairs in the room.",
+      "choices": [
+        { "id": "c_n_count_02_a", "text": "much" },
+        { "id": "c_n_count_02_b", "text": "many" },
+        { "id": "c_n_count_02_c", "text": "little" },
+        { "id": "c_n_count_02_d", "text": "a little" }
+      ],
+      "explanation": "Chairs are countable → 'many chairs'."
+    },
+    {
+      "id": "q_n_count_03",
+      "order": 3,
+      "stem": "I only have ___ information about the event.",
+      "choices": [
+        { "id": "c_n_count_03_a", "text": "a few" },
+        { "id": "c_n_count_03_b", "text": "few" },
+        { "id": "c_n_count_03_c", "text": "a little" },
+        { "id": "c_n_count_03_d", "text": "many" }
+      ],
+      "explanation": "Information is uncountable → 'a little information'."
+    },
+    {
+      "id": "q_n_count_04",
+      "order": 4,
+      "stem": "We bought two ___ of bread.",
+      "choices": [
+        { "id": "c_n_count_04_a", "text": "breads" },
+        { "id": "c_n_count_04_b", "text": "loaves" },
+        { "id": "c_n_count_04_c", "text": "slices" },
+        { "id": "c_n_count_04_d", "text": "pieces" }
+      ],
+      "explanation": "Proper partitive → 'two loaves of bread'."
+    },
+    {
+      "id": "q_n_count_05",
+      "order": 5,
+      "stem": "She gave me ___ advice before the interview.",
+      "choices": [
+        { "id": "c_n_count_05_a", "text": "an" },
+        { "id": "c_n_count_05_b", "text": "a" },
+        { "id": "c_n_count_05_c", "text": "some" },
+        { "id": "c_n_count_05_d", "text": "many" }
+      ],
+      "explanation": "Advice is uncountable → 'some advice'."
+    },
+    {
+      "id": "q_n_count_06",
+      "order": 6,
+      "stem": "There were very ___ people at the concert.",
+      "choices": [
+        { "id": "c_n_count_06_a", "text": "few" },
+        { "id": "c_n_count_06_b", "text": "little" },
+        { "id": "c_n_count_06_c", "text": "a little" },
+        { "id": "c_n_count_06_d", "text": "much" }
+      ],
+      "explanation": "People (countable plural) → 'few people'."
+    }
+  ],
+  "numQuestions": 6
+}

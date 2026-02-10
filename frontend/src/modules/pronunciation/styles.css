@@ -1,0 +1,197 @@
+.pronunciation-root {
+  --bg: #0b1020;
+  --card: #121a2e;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --green: #16a34a;
+  --amber: #d97706;
+  --red: #dc2626;
+  --blue: #2563eb;
+  --gray: #374151;
+  --border: #243049;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: linear-gradient(180deg, #0b1020, #0d1426 40%, #0b1020);
+  color: var(--text);
+  margin: 0;
+}
+
+.pronunciation-root * {
+  box-sizing: border-box;
+}
+
+.pronunciation-root .container { max-width: 960px; margin: 32px auto; padding: 0 16px; }
+.pronunciation-root header { margin-bottom: 16px; }
+.pronunciation-root h1 { margin: 0 0 8px; font-size: 28px; }
+.pronunciation-root .subtitle { margin: 0; color: var(--muted); }
+
+.pronunciation-root .card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.pronunciation-root .label { display:block; font-weight: 600; margin: 8px 0; }
+.pronunciation-root .text-input {
+  width: 100%; padding: 10px 12px;
+  border-radius: 10px; border: 1px solid var(--border);
+  background: #0d152a; color: var(--text);
+}
+
+.pronunciation-root .row { display: flex; gap: 16px; flex-wrap: wrap; }
+.pronunciation-root .col { flex: 1 1 280px; }
+
+.pronunciation-root .actions { display: flex; gap: 12px; margin-top: 12px; }
+.pronunciation-root .btn {
+  padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border);
+  background: #13203b; color: var(--text); cursor: pointer;
+}
+.pronunciation-root .btn:hover { filter: brightness(1.1); }
+.pronunciation-root .btn-primary { background: #102852; border-color: #1f3b6a; }
+.pronunciation-root .btn-secondary { background: #1b253b; }
+.pronunciation-root .btn-stop { background: #4a1630; border-color: #712146; }
+.pronunciation-root .link {
+  background: transparent; border: none; color: var(--blue);
+  cursor: pointer; padding: 0; margin-left: 8px;
+}
+
+.pronunciation-root .preview-audio { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+.pronunciation-root .error {
+  margin-top: 10px; color: #fecaca; background: #47171b;
+  border: 1px solid #7f1d1d; padding: 8px; border-radius: 8px;
+}
+
+.pronunciation-root .scorebar {
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.pronunciation-root .score { display: flex; align-items: baseline; gap: 8px; }
+.pronunciation-root .score-num { font-size: 32px; font-weight: 800; }
+.pronunciation-root .score-label { font-size: 16px; color: var(--muted); }
+.pronunciation-root .meta { color: var(--muted); font-size: 14px; display: grid; gap: 4px; }
+
+.pronunciation-root .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.pronunciation-root .chip {
+  position: relative;
+  padding: 6px 10px; border-radius: 999px; font-size: 14px;
+  border: 1px solid var(--border); background: #0e1730;
+}
+.pronunciation-root .chip-green { border-color: rgba(22,163,74,.5); background: rgba(22,163,74,.12); }
+.pronunciation-root .chip-amber { border-color: rgba(217,119,6,.5); background: rgba(217,119,6,.12); }
+.pronunciation-root .chip-red { border-color: rgba(220,38,38,.5); background: rgba(220,38,38,.12); }
+.pronunciation-root .muted { color: var(--muted); }
+
+.pronunciation-root .underline {
+  position: absolute; left: 10px; right: 10px; bottom: -2px;
+  height: 3px; border-radius: 2px;
+}
+.pronunciation-root .underline-strong { background: var(--green); }
+.pronunciation-root .underline-mid { background: var(--amber); }
+.pronunciation-root .underline-weak { background: var(--red); }
+
+.pronunciation-root .pills { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.pronunciation-root .pill {
+  padding: 4px 8px; border-radius: 999px;
+  border: 1px solid var(--border); font-size: 12px;
+}
+.pronunciation-root .pill-gray { background: #111827; color: #e5e7eb; }
+.pronunciation-root .pill-amber {
+  background: rgba(217,119,6,.12);
+  border-color: rgba(217,119,6,.5);
+  color: #f8d7a1;
+}
+.pronunciation-root .pill-neutral { background: #0f1d35; color: var(--text); }
+
+.pronunciation-root .box { border: 1px solid var(--border); border-radius: 10px; padding: 8px; }
+.pronunciation-root .two-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.pronunciation-root .hints { margin: 8px 0 0; }
+.pronunciation-root .hints li { margin: 4px 0; }
+
+.pronunciation-root .footer {
+  margin: 24px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* --- additions for detailed scoring --- */
+.pronunciation-root .grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.pronunciation-root .kv {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 6px 0;
+}
+.pronunciation-root .kv-value { font-weight: 600; }
+.pronunciation-root .kv.total { font-size: 18px; }
+
+.pronunciation-root .divider {
+  height: 1px;
+  background: var(--border);
+  margin: 10px 0;
+}
+
+.pronunciation-root .table {
+  width: 100%;
+  display: grid;
+  gap: 4px;
+}
+.pronunciation-root .tr {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr 0.8fr 0.8fr 0.8fr 0.8fr;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0b152d;
+}
+.pronunciation-root .tr.th { background: #0f1d35; font-weight: 700; }
+.pronunciation-root .tr.th > div { color: var(--muted); }
+.pronunciation-root .table .tr .tag {
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 12px;
+  text-transform: capitalize;
+  text-align: center;
+}
+.pronunciation-root .tag-green {
+  background: rgba(22,163,74,.15);
+  border: 1px solid rgba(22,163,74,.4);
+}
+.pronunciation-root .tag-amber {
+  background: rgba(217,119,6,.15);
+  border: 1px solid rgba(217,119,6,.4);
+}
+.pronunciation-root .tag-red {
+  background: rgba(220,38,38,.15);
+  border: 1px solid rgba(220,38,38,.4);
+}
+
+.pronunciation-root .pre {
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  background: #0b152d;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  color: #cbd5e1;
+  max-height: 360px;
+  overflow: auto;
+}
+
+/* replace the nth-of-type rule with this */
+.pronunciation-root .insertions .tr {
+  grid-template-columns: 1fr 0.8fr 0.8fr 0.8fr 0.8fr;
+}

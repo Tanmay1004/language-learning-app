@@ -1,0 +1,78 @@
+{
+  "unit": { "id": "unit_articles_a_an", "title": "Using 'a' and 'an'" },
+  "questions": [
+    {
+      "id": "q_art_a_an_01",
+      "order": 1,
+      "stem": "Choose the correct article: He is ___ honest man.",
+      "choices": [
+        { "id": "c_art_a_an_01_a", "text": "a" },
+        { "id": "c_art_a_an_01_b", "text": "an" },
+        { "id": "c_art_a_an_01_c", "text": "the" },
+        { "id": "c_art_a_an_01_d", "text": "— (no article)" }
+      ],
+      "explanation": "Use 'an' before vowel sounds (honest → /ˈɒn-/)."
+    },
+    {
+      "id": "q_art_a_an_02",
+      "order": 2,
+      "stem": "I saw ___ European scientist on TV.",
+      "choices": [
+        { "id": "c_art_a_an_02_a", "text": "a" },
+        { "id": "c_art_a_an_02_b", "text": "an" },
+        { "id": "c_art_a_an_02_c", "text": "the" },
+        { "id": "c_art_a_an_02_d", "text": "— (no article)" }
+      ],
+      "explanation": "'European' starts with a /juː/ sound → consonant sound → 'a'."
+    },
+    {
+      "id": "q_art_a_an_03",
+      "order": 3,
+      "stem": "Could I have ___ orange, please?",
+      "choices": [
+        { "id": "c_art_a_an_03_a", "text": "a" },
+        { "id": "c_art_a_an_03_b", "text": "an" },
+        { "id": "c_art_a_an_03_c", "text": "the" },
+        { "id": "c_art_a_an_03_d", "text": "— (no article)" }
+      ],
+      "explanation": "Vowel sound /ˈɔːr-/ → 'an'."
+    },
+    {
+      "id": "q_art_a_an_04",
+      "order": 4,
+      "stem": "She adopted ___ cat yesterday.",
+      "choices": [
+        { "id": "c_art_a_an_04_a", "text": "a" },
+        { "id": "c_art_a_an_04_b", "text": "an" },
+        { "id": "c_art_a_an_04_c", "text": "the" },
+        { "id": "c_art_a_an_04_d", "text": "— (no article)" }
+      ],
+      "explanation": "New/unspecified singular countable noun → 'a'."
+    },
+    {
+      "id": "q_art_a_an_05",
+      "order": 5,
+      "stem": "He is ___ MBA graduate.",
+      "choices": [
+        { "id": "c_art_a_an_05_a", "text": "a" },
+        { "id": "c_art_a_an_05_b", "text": "an" },
+        { "id": "c_art_a_an_05_c", "text": "the" },
+        { "id": "c_art_a_an_05_d", "text": "— (no article)" }
+      ],
+      "explanation": "MBA begins with an /ɛm/ sound → vowel sound → 'an'."
+    },
+    {
+      "id": "q_art_a_an_06",
+      "order": 6,
+      "stem": "We rented ___ house near the beach.",
+      "choices": [
+        { "id": "c_art_a_an_06_a", "text": "a" },
+        { "id": "c_art_a_an_06_b", "text": "an" },
+        { "id": "c_art_a_an_06_c", "text": "the" },
+        { "id": "c_art_a_an_06_d", "text": "— (no article)" }
+      ],
+      "explanation": "First mention, singular countable → 'a'."
+    }
+  ],
+  "numQuestions": 6
+}
