@@ -398,6 +398,7 @@ http://localhost:8000
 ## 🧪 Tested On
 
 - Windows 10 / 11
+- MacOs 26
 - Python 3.12+
 - Node 18+
 - Ollama (local)
