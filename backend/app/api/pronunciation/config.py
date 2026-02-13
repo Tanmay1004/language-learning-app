@@ -1,3 +1,4 @@
+import os
 import shutil
 from pathlib import Path
 from vosk import Model
@@ -18,9 +19,10 @@ NORM_DIR.mkdir(parents=True, exist_ok=True)
 # FFMPEG
 # =========================
 
-FFMPEG_PATH = shutil.which("ffmpeg")
-if not FFMPEG_PATH:
-    raise RuntimeError("FFmpeg not found on PATH")
+FFMPEG_PATH = os.getenv("FFMPEG_PATH") or shutil.which("ffmpeg")
+
+if not FFMPEG_PATH or not Path(FFMPEG_PATH).exists():
+    raise RuntimeError("FFmpeg not found. Set FFMPEG_PATH or add ffmpeg to PATH.")
 
 # =========================
 # VOSK
