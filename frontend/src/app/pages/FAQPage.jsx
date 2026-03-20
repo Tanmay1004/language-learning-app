@@ -2,6 +2,98 @@ import React from "react";
 import './styles/faqPage.css';
 import "./styles/bootstrap-legacy.scoped.css";
 
+const faqs = [
+    {
+        id: "One",
+        question: "What is this app used for?",
+        answer:
+            "This app is designed to help users improve their English language skills through interactive learning tools such as pronunciation practice, quizzes, and conversation-based activities."
+    },
+    {
+        id: "Two",
+        question: "Do I need to create an account to use the app?",
+        answer:
+            "Some features may be available without signing in, but creating an account helps you save progress, track learning activity, and access a more personalized experience."
+    },
+    {
+        id: "Three",
+        question: "What kind of English skills can I practice here?",
+        answer:
+            "You can practice multiple skills including pronunciation, vocabulary, grammar, comprehension, and conversational English through guided exercises and interactive modules."
+    },
+    {
+        id: "Four",
+        question: "How does pronunciation practice work?",
+        answer:
+            "The pronunciation feature helps learners practice speaking by encouraging repetition, listening, and comparison so they can improve clarity, confidence, and spoken English accuracy."
+    },
+    {
+        id: "Five",
+        question: "Are the quizzes suitable for beginners?",
+        answer:
+            "Yes, the quizzes are useful for beginners as well as learners at higher levels. They are meant to reinforce understanding and help users steadily improve over time."
+    },
+    {
+        id: "Six",
+        question: "Can I track my learning progress?",
+        answer:
+            "Yes, the platform is designed to support progress tracking so learners can monitor improvement, stay motivated, and identify areas that need more practice."
+    },
+    {
+        id: "Seven",
+        question: "Is this app only for students?",
+        answer:
+            "No, the app can be used by students, job seekers, professionals, and anyone who wants to strengthen their English communication skills."
+    },
+    {
+        id: "Eight",
+        question: "Can I use the app on mobile devices?",
+        answer:
+            "Yes, the app is designed to be accessible on different devices so learners can continue practicing from desktop or mobile environments."
+    },
+    {
+        id: "Nine",
+        question: "How often should I practice?",
+        answer:
+            "Regular practice is the best way to improve. Even short daily sessions can help build vocabulary, confidence, and better communication habits over time."
+    },
+    {
+        id: "Ten",
+        question: "Does the app help with speaking confidence?",
+        answer:
+            "Yes, the app supports speaking confidence by combining pronunciation work, repeated practice, and conversational activities that encourage active language use."
+    },
+    {
+        id: "Eleven",
+        question: "What should I do if something is not working?",
+        answer:
+            "If you experience a technical issue, try refreshing the page or signing in again. If the problem continues, contact the support team or project administrator for help."
+    },
+    {
+        id: "Twelve",
+        question: "Can this app help me prepare for interviews or real conversations?",
+        answer:
+            "Yes, the app can support interview and conversation preparation by helping you practice listening, speaking, and answering questions more clearly and confidently."
+    },
+    {
+        id: "Thirteen",
+        question: "Is the app useful for self-learning?",
+        answer:
+            "Absolutely. The app is well suited for self-paced learning because users can practice independently, repeat exercises, and build skills step by step."
+    },
+    {
+        id: "Fourteen",
+        question: "What makes this app different from basic study materials?",
+        answer:
+            "Unlike static study materials, this app gives learners interactive practice opportunities that make learning more engaging, practical, and easier to apply in real situations."
+    },
+    {
+        id: "Fifteen",
+        question: "How can I give feedback about the app?",
+        answer:
+            "You can share feedback with the project team or support contact so future improvements can better match learner needs and improve the overall experience."
+    }
+];
 
 const FAQPage = () => {
     return (
@@ -11,194 +103,45 @@ const FAQPage = () => {
                     <div className="container">
                         <div className="row gy-5 gy-lg-0">
                             <div className="col-12 col-lg-6">
-                                <h2 className="h1 mb-3">How can we help you? Unlocking possibilities for your touch typing journey.</h2>
-                                <p className="lead fs-4 text-secondary mb-4">We hope you find answers to your questions here. For further assistance, please explore our Support Center or contact us via email.</p>
-                                <button type="button" className="btn btn-lg bsb-btn-2xl btn-primary">All FAQs</button>
+                                <h2 className="h1 mb-3">
+                                    How can we help you with your English learning journey?
+                                </h2>
+                                <p className="lead fs-4 text-secondary mb-4">
+                                    Here are answers to the most common questions about using the platform,
+                                    practicing your skills, and getting the most out of your learning experience.
+                                </p>
                             </div>
+
                             <div className="col-12 col-lg-6">
                                 <div className="row justify-content-xl-end">
                                     <div className="col-12 col-xl-11">
                                         <div className="accordion accordion-flush" id="accordionExample">
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingOne">
-                                                    <button className="accordion-button bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                        What is touch typing?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                    <div className="accordion-body">
-                                                        Touch typing is a method of typing without looking at the keyboard, using all fingers and relying on muscle memory to find keys.
+                                            {faqs.map((faq, index) => (
+                                                <div key={faq.id} className="accordion-item mb-4 shadow-sm">
+                                                    <h2 className="accordion-header" id={`heading${faq.id}`}>
+                                                        <button
+                                                            className={`accordion-button bg-transparent fw-bold ${index !== 0 ? "collapsed" : ""}`}
+                                                            type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target={`#collapse${faq.id}`}
+                                                            aria-expanded={index === 0 ? "true" : "false"}
+                                                            aria-controls={`collapse${faq.id}`}
+                                                        >
+                                                            {faq.question}
+                                                        </button>
+                                                    </h2>
+                                                    <div
+                                                        id={`collapse${faq.id}`}
+                                                        className={`accordion-collapse collapse ${index === 0 ? "show" : ""}`}
+                                                        aria-labelledby={`heading${faq.id}`}
+                                                        data-bs-parent="#accordionExample"
+                                                    >
+                                                        <div className="accordion-body">
+                                                            {faq.answer}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingTwo">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                        How can I improve my typing speed?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo">
-                                                    <div className="accordion-body">
-                                                        Consistent practice using our typing tests and tutorials, focusing on accuracy over speed, and setting personal goals can greatly improve your typing speed.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingThree">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                        Do I need to create an account to use the typing tests?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree">
-                                                    <div className="accordion-body">
-                                                        No, signing up is optional. You can access many of our features and tests without creating an account. However, creating an account allows you to save your progress and access personalized analysis.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingFour">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                        What kind of analysis does your app provide?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour">
-                                                    <div className="accordion-body">
-                                                        Our app provides comprehensive analysis of your typing speed, accuracy, and progress over time, helping you identify areas for improvement.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingFive">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                                        How often should I practice touch typing?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseFive" className="accordion-collapse collapse" aria-labelledby="headingFive">
-                                                    <div className="accordion-body">
-                                                        Regular practice is key. Aim for at least 15-30 minutes a day, several times a week, to see significant improvements in your typing skills.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingSix">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                                        Can I track my progress?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseSix" className="accordion-collapse collapse" aria-labelledby="headingSix">
-                                                    <div className="accordion-body">
-                                                        Yes! If you create an account, you can track your progress over time, view your best scores, and analyze your typing patterns.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingSeven">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                                        Are there any tips for beginners?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseSeven" className="accordion-collapse collapse" aria-labelledby="headingSeven">
-                                                    <div className="accordion-body">
-                                                        Start with home row keys, practice regularly, maintain proper posture, and avoid looking at the keyboard. Use our beginner tutorials for guidance.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingEight">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                                        What is the benefit of touch typing?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseEight" className="accordion-collapse collapse" aria-labelledby="headingEight">
-                                                    <div className="accordion-body">
-                                                        Touch typing increases typing speed and accuracy, reduces strain on your hands, and allows you to focus on your screen rather than your keyboard.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingNine">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                                                        How long does it take to learn touch typing?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseNine" className="accordion-collapse collapse" aria-labelledby="headingNine">
-                                                    <div className="accordion-body">
-                                                        The time it takes to learn touch typing varies, but with consistent practice, many users see improvement within a few weeks to a couple of months.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingTen">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                                                        Can I use your app on mobile devices?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseTen" className="accordion-collapse collapse" aria-labelledby="headingTen">
-                                                    <div className="accordion-body">
-                                                        Yes, our app is optimized for both desktop and mobile devices, allowing you to practice touch typing wherever you are.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingEleven">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
-                                                        What if I encounter technical issues?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseEleven" className="accordion-collapse collapse" aria-labelledby="headingEleven">
-                                                    <div className="accordion-body">
-                                                        If you experience any technical issues, please contact our support team through the Support Center, and we’ll be happy to assist you.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingTwelve">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
-                                                        Are there any additional resources for advanced typists?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseTwelve" className="accordion-collapse collapse" aria-labelledby="headingTwelve">
-                                                    <div className="accordion-body">
-                                                        Yes, we provide advanced typing tests, drills, and tutorials designed to challenge experienced typists and help them refine their skills.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingThirteen">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
-                                                        Can I customize my typing practice sessions?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseThirteen" className="accordion-collapse collapse" aria-labelledby="headingThirteen">
-                                                    <div className="accordion-body">
-                                                        Yes! Our app allows you to customize practice sessions by selecting specific lessons, words, or typing styles to match your learning needs.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingFourteen">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
-                                                        Is there a way to compete with others on your platform?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseFourteen" className="accordion-collapse collapse" aria-labelledby="headingFourteen">
-                                                    <div className="accordion-body">
-                                                        Yes, we offer leaderboards and challenges where you can compete with other users, track your progress, and earn rewards for your achievements.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="accordion-item mb-4 shadow-sm">
-                                                <h2 className="accordion-header" id="headingFifteen">
-                                                    <button className="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
-                                                        How can I provide feedback about the app?
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseFifteen" className="accordion-collapse collapse" aria-labelledby="headingFifteen">
-                                                    <div className="accordion-body">
-                                                        We value your feedback! You can provide feedback through our Support Center or by emailing us directly. Your input helps us improve the app for everyone.
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
@@ -206,10 +149,9 @@ const FAQPage = () => {
                         </div>
                     </div>
                 </section>
-
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default FAQPage;

@@ -44,13 +44,13 @@
 
 .homepage .monitor {
   width: 100%;
-  height: 100%;
-  align-items: center;
-  background-image: url("../Assets/Monitor.png");
+  max-width: 700px; /* control size */
+  aspect-ratio: 1 / 1; /* keeps it square */
+  background-image: url("../Assets/speaking.png");
   background-position: center;
-  background-size: contain;
+  background-size: 110%;
   background-repeat: no-repeat;
-  font-size: 2rem;
+  font-size: 1.7rem;
   text-align: center;
   display: flex;
   align-items: center;
@@ -58,7 +58,7 @@
 }
 
 .homepage .monitor span {
-  margin-top: -80px;
+  margin-top: -220px;
   font-weight: bold;
   color: white;
 }
@@ -74,7 +74,8 @@
   height: 220px;
 }
 
-.homepage .section-2 img, .section-3 img {
+.homepage .section-2 img,
+.homepage .section-3 img {
   z-index: 2;
   width: 100%;
   height: auto;
@@ -129,3 +130,37 @@
   transform: translateX(0);
 }
 
+
+.homepage .speech-wrapper {
+  position: relative;
+  width: 420px;   /* adjust based on your bubble size */
+  height: 280px;  /* adjust based on your bubble size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage .speech-bubble {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.homepage .speech-text {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  line-height: 1.3;
+  font-size: 2rem;
+  z-index: 2;
+}
+
+.homepage .section-dark-gray {
+  background-color: #d6d8db; /* darker than bg-body-secondary */
+}
