@@ -26,7 +26,7 @@ export default function StreakIndicator() {
   const isActive = streak > 0;
 
   return (
-    <Tooltip title={isActive ? `${streak} day streak 🔥` : "No active streak"}>
+    <Tooltip title={isActive ? `${streak} day streak ` : "No active streak"}>
       <Box
         sx={{
           display: "flex",

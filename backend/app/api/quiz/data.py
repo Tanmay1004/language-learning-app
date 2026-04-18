@@ -562,3 +562,80 @@ ANSWER_KEY = {
     "q_n_prop_05": "c_n_prop_05_b",
 }
 
+import json
+import logging
+from pathlib import Path
+
+# Path to the dynamic quizzes directory
+QUIZZES_DIR = Path(__file__).parent.parent.parent.parent / "dataset" / "quizzes"
+
+# Attempt to load dynamic quizzes
+diagnostics_units = []
+if QUIZZES_DIR.exists():
+    for filepath in QUIZZES_DIR.glob("*.json"):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                
+            unit_id = data.get("unit_id")
+            if not unit_id:
+                continue
+                
+            # 1. Add to UNITS_BY_SECTION array
+            diagnostics_units.append({
+                "id": unit_id,
+                "sectionId": "sec_diagnostics",
+                "title": data.get("title", "Untitled Quiz"),
+                "description": data.get("description", ""),
+                "order": len(diagnostics_units) + 1,
+                "questionCount": len(data.get("questions", [])),
+                "passThreshold": 70,
+                # New parameter for Phase 4
+                "required_xp": data.get("required_xp", 0)
+            })
+            
+            # 2. Add to QUIZ_BY_UNIT
+            formatted_questions = []
+            for q_idx, q in enumerate(data.get("questions", [])):
+                formatted_choices = []
+                for opt in q.get("options", []):
+                    formatted_choices.append({
+                        "id": opt.get("id"),
+                        "text": opt.get("text")
+                    })
+                
+                formatted_questions.append({
+                    "id": q.get("id"),
+                    "order": q_idx + 1,
+                    "stem": q.get("text"),
+                    "choices": formatted_choices,
+                    "explanation": q.get("explanation", ""),
+                    "tags": q.get("tags", [])
+                })
+                
+                # 3. Add to ANSWER_KEY
+                ANSWER_KEY[q.get("id")] = q.get("correctOptionId")
+                
+            QUIZ_BY_UNIT[unit_id] = {
+                "unit": {"id": unit_id, "title": data.get("title", "Untitled Quiz")},
+                "questions": formatted_questions,
+                "numQuestions": len(formatted_questions)
+            }
+                
+        except Exception as e:
+            logging.error(f"Failed to load quiz from {filepath}: {e}")
+
+# If we loaded any dynamic units, register the new section
+if diagnostics_units:
+    SECTIONS["sections"].append({
+        "id": "sec_diagnostics",
+        "title": "Placement & Diagnostics",
+        "description": "Adaptive quizzes to discover your weak points.",
+        "order": 99,
+        "unitCount": len(diagnostics_units)
+    })
+    
+    UNITS_BY_SECTION["sec_diagnostics"] = {
+        "section": {"id": "sec_diagnostics", "title": "Placement & Diagnostics"},
+        "units": diagnostics_units
+    }

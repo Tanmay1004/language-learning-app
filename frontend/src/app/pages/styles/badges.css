@@ -1,64 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+/* ========================= */
+/* PAGE BASE (CLEAN LIGHT THEME) */
+/* ========================= */
+
 .badges {
     margin: 0;
     padding: 0;
-    margin-top: -20px;
     box-sizing: border-box;
-    height: 100%;
-    background-color: #FFFFCC;
+    min-height: 100vh;
+
+    background: #ffffff;
+    color: #111827;
+    /* soft black like ChatGPT */
 }
 
-.badges h1{
-    font-family: "Spicy Rice", serif;
-    color: #0066FF;
-    font-size: 3.5rem;
-}
+/* ========================= */
+/* HEADINGS */
+/* ========================= */
 
-.badges h2{
-    font-family: "Noto Serif", serif;
-    color:#606060;
+.badges h1 {
+    font-family: "Inter", "Segoe UI", sans-serif;
+    font-weight: 700;
+    color: #111827;
     font-size: 2.5rem;
 }
 
-.badge{
-    width:10rem;
-    position: relative; /* Positioning context for the name */
-    transition: transform 0.3s ease; /* Smooth scaling */
+.badges h2 {
+    font-family: "Inter", "Segoe UI", sans-serif;
+    font-weight: 600;
+    color: #6b7280;
+    /* soft gray */
+    font-size: 1.5rem;
+    margin-top: 24px;
 }
 
+/* ========================= */
+/* GRID */
+/* ========================= */
 
-.badges img{
-    width: 100%;
+.badge-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 30px;
 }
 
-.badge:hover {
-    transform: scale(1.1); /* Scale up on hover */
+/* ========================= */
+/* BADGE CARD (CLEAN MINIMAL) */
+/* ========================= */
+
+.badge-card {
+    width: 110px;
+    height: 110px;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
-.locked .badge img{
-    filter: grayscale(100%); /* Makes the image grayscale */
-    opacity: 0.7; /* Reduces opacity for a disabled effect */
+/* subtle hover like modern UI */
+.badge-card:hover {
+    transform: translateY(-3px);
+    border-color: #d1d5db;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
+/* ========================= */
+/* ICON STYLE */
+/* ========================= */
+
+.badge-icon {
+    font-size: 38px !important;
+    color: #111827;
+    transition: all 0.2s ease;
+}
+
+/* ========================= */
+/* UNLOCKED (NORMAL BLACK ICONS) */
+/* ========================= */
+
+.unlocked .badge-icon {
+    color: #111827;
+}
+
+/* ========================= */
+/* LOCKED (GREYED OUT) */
+/* ========================= */
+
+.locked {
+    opacity: 0.4;
+}
+
+.locked .badge-icon {
+    color: #9ca3af;
+}
+
+/* no hover effect on locked */
+.locked .badge-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #e5e7eb;
+}
+
+/* ========================= */
+/* BADGE NAME */
+/* ========================= */
 
 .badge-name {
-    position: absolute; /* Positioning the name */
-    bottom: -30px; /* Adjust according to your design */
-    left: 50%;
-    transform: translateX(-50%); /* Center the name */
-    color: white; /* Default color */
-    font-weight: bold; /* Make the text bold */
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #374151;
     text-align: center;
-    font-size: 1.5rem; /* Increase font size */
+    margin: 0;
 }
 
+/* ========================= */
+/* SPACING */
+/* ========================= */
 
-.badge-seventh { color: #FFB800; } /* Color for 'Seven' */
-.badge-bronze { color: #CD7F32; } /* Color for 'Bronze' */
-.badge-silver { color: #C0C0C0; } /* Color for 'Silver' */
-.badge-leaf { color: #8B8C6A; } /* Color for 'Leaf' */
-.badge-gold { color: #FFD700; } /* Color for 'Gold' */
-.badge-platinum { color: #E5E4E2; } /* Color for 'Platinum' */
-.badge-diamond { color: #B9FBC0; } /* Color for 'Diamond' */
-.badge-horseshoe { color: #696969; } /* Color for 'Horseshoe' */
+.badges h2 {
+    padding-left: 20px;
+}

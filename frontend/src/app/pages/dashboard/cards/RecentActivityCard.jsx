@@ -134,7 +134,7 @@ export default function RecentActivityCard() {
                                     alignItems: "center",
                                     gap: 2,
                                     px: 1.6,
-                                    minHeight: 64, // 🔥 MATCH
+                                    minHeight: 64, //  MATCH
                                     borderRadius: 2,
                                     background:
                                         item.type === "chat"

@@ -1,62 +1,19 @@
 import { useEffect, useState } from "react";
 import {
-  Card,
-  CardContent,
+  Paper,
   Typography,
   Box,
-  Stack,
+  Chip,
   CircularProgress,
 } from "@mui/material";
 import { doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { db, auth } from "../../../../auth/firebase";
-import { expandDotFields } from "../../../../shared/utils/firestore";
-
-const POS_META = {
-  verb: "Verb Tense & Form",
-  "verb.modal": "Modal Verbs",
-  "verb.auxiliary": "Auxiliary Verbs",
-  adjective: "Adjectives",
-  adverb: "Adverbs",
-  determiner: "Articles / Determiners",
-  preposition: "Prepositions",
-  pronoun: "Pronouns",
-  possessive: "Possessives",
-  conjunction: "Conjunctions",
-  contraction: "Contractions",
-  punctuation: "Punctuation",
-  orthography: "Spelling / Capitalization",
-  lexical: "Word Choice",
-  grammar: "General Grammar",
-  colloquialism: "Colloquial Usage",
-};
-
-function FocusPill({ title, value, gradient }) {
-  return (
-    <Box
-      sx={{
-        px: 2.5,
-        py: 1.6,
-        borderRadius: 999,
-        background: gradient,
-        color: "#000",
-        fontWeight: 600,
-        textAlign: "center",
-        fontSize: 15,
-        letterSpacing: 0.2,
-        boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
-      }}
-    >
-      <span style={{ opacity: 0.75 }}>{title}:</span>{" "}
-      <span>{value}</span>
-    </Box>
-  );
-}
 
 export default function FocusAreasCard() {
   const [loading, setLoading] = useState(true);
-  const [grammarFocus, setGrammarFocus] = useState(null);
-  const [pronunciationFocus, setPronunciationFocus] = useState(null);
+  const [tagXP, setTagXP] = useState({});
+  const [masteryScores, setMasteryScores] = useState({});
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
@@ -66,40 +23,17 @@ export default function FocusAreasCard() {
       }
 
       try {
-        // ---- Grammar ----
-        const grammarRef = doc(db, "users", user.uid, "chatErrors", "errors");
-        const grammarSnap = await getDoc(grammarRef);
+        const ref = doc(db, "users", user.uid);
+        const snap = await getDoc(ref);
 
-        if (grammarSnap.exists()) {
-          const expanded = expandDotFields(grammarSnap.data());
-          const topGrammar = Object.entries(expanded)
-            .filter(([pos, v]) => POS_META[pos] && v?.count > 0)
-            .sort((a, b) => b[1].count - a[1].count)[0];
+        if (snap.exists()) {
+          const data = snap.data();
 
-          if (topGrammar) {
-            setGrammarFocus(POS_META[topGrammar[0]]);
-          }
+          setTagXP(data.tag_xp || {});
+          setMasteryScores(data.mastery_scores || {});
         }
-
-        // ---- Pronunciation ----
-        const pronRef = doc(
-          db,
-          "users",
-          user.uid,
-          "pronunciationStats",
-          "errors"
-        );
-        const pronSnap = await getDoc(pronRef);
-
-        if (pronSnap.exists()) {
-          const weakest = Object.entries(pronSnap.data())
-            .filter(([, v]) => typeof v?.score === "number")
-            .sort((a, b) => a[1].score - b[1].score)[0];
-
-          if (weakest) {
-            setPronunciationFocus(weakest[0]);
-          }
-        }
+      } catch (err) {
+        console.error("Error fetching user data:", err);
       } finally {
         setLoading(false);
       }
@@ -108,56 +42,71 @@ export default function FocusAreasCard() {
     return () => unsub();
   }, []);
 
+  // -----------------------------
+  // STRONG AREAS (XP HIGH)
+  // -----------------------------
+  const strengths = Object.entries(tagXP)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3);
+
+  // -----------------------------
+  // WEAK AREAS (MOST NEGATIVE / LOW)
+  // -----------------------------
+  const weaknesses = Object.entries(masteryScores)
+    .sort((a, b) => a[1] - b[1])
+    .slice(0, 3);
+
   return (
-    <Card sx={{ height: "100%" }}>
-      <CardContent>
-        <Typography variant="h6" gutterBottom>
-          Focus Areas
-        </Typography>
+    <Paper sx={{ p: 2, borderRadius: 3 }}>
 
-        {loading && (
-          <Box sx={{ display: "flex", justifyContent: "center", py: 3 }}>
-            <CircularProgress size={24} />
-          </Box>
-        )}
+      <Typography variant="h6" sx={{ mb: 2 }}>
+        Focus Areas
+      </Typography>
 
-        {!loading && !grammarFocus && !pronunciationFocus && (
+      {loading && <CircularProgress size={20} />}
+
+      {/* ---------------- STRENGTHS ---------------- */}
+      <Typography variant="subtitle2" sx={{ color: "green", mb: 1 }}>
+        Strengths
+      </Typography>
+
+      <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", mb: 2 }}>
+        {strengths.length > 0 ? (
+          strengths.map(([tag, xp]) => (
+            <Chip
+              key={tag}
+              label={`${tag} (${xp} XP)`}
+              color="success"
+            />
+          ))
+        ) : (
           <Typography variant="body2" color="text.secondary">
-            You’re doing great so far — no clear weaknesses detected yet 🎉
+            No strengths yet — keep practicing 🚀
           </Typography>
         )}
+      </Box>
 
-        {!loading && (grammarFocus || pronunciationFocus) && (
-          <Stack spacing={1.8} sx={{ mt: 1 }}>
-            {grammarFocus && (
-              <FocusPill
-                title="🧠 Grammar"
-                value={grammarFocus}
-                gradient="linear-gradient(135deg, #ff6b6b, #ff8e53)"
-              />
-            )}
+      {/* ---------------- WEAKNESSES ---------------- */}
+      <Typography variant="subtitle2" sx={{ color: "red", mb: 1 }}>
+        Needs Improvement
+      </Typography>
 
-            {pronunciationFocus && (
-              <FocusPill
-                title="🗣️ Pronunciation"
-                value={`“${pronunciationFocus}”`}
-                gradient="linear-gradient(135deg, #2dd4bf, #38bdf8)"
-              />
-            )}
-          </Stack>
-        )}
-
-        {!loading && (grammarFocus || pronunciationFocus) && (
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ mt: 2, lineHeight: 1.6 }}
-          >
-            These are your highest-impact improvement areas right now.
-            Tackling them will give you the fastest progress 🚀
+      <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
+        {weaknesses.length > 0 ? (
+          weaknesses.map(([tag, score]) => (
+            <Chip
+              key={tag}
+              label={`${tag} (${score})`}
+              color="error"
+            />
+          ))
+        ) : (
+          <Typography variant="body2" color="text.secondary">
+            No weak areas detected 🎉
           </Typography>
         )}
-      </CardContent>
-    </Card>
+      </Box>
+
+    </Paper>
   );
 }

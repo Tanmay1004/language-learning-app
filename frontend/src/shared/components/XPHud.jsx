@@ -20,7 +20,7 @@ export default function XPHud() {
     };
   }, []);
 
-  // 🔥 SINGLE authoritative /me fetch
+  //  SINGLE authoritative /me fetch
   useEffect(() => {
     fetchUserProfile()
       .then((res) => {
@@ -28,7 +28,7 @@ export default function XPHud() {
           new CustomEvent("user:updated", { detail: res })
         );
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   return (

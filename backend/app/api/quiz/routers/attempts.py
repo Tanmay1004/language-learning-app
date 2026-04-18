@@ -1,9 +1,13 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from uuid import uuid4
 
 from ..models import AttemptCreate, AnswerUpsert, AttemptResult
 from ..data import QUIZ_BY_UNIT, ANSWER_KEY
 from ..store import STORE
+
+from auth.firebase_auth import get_current_user_id
+from firebase.firebase_admin import db
+from firebase_admin.firestore import Increment, SERVER_TIMESTAMP
 
 router = APIRouter(tags=["attempts"])
 
@@ -44,7 +48,7 @@ def upsert_answer(attempt_id: str, payload: AnswerUpsert):
 
 
 @router.post("/attempt/{attempt_id}/submit", response_model=AttemptResult)
-def submit_attempt(attempt_id: str):
+def submit_attempt(attempt_id: str, user_id: str = Depends(get_current_user_id)):
     att = STORE.get(attempt_id)
     if not att:
         raise HTTPException(status_code=404, detail="Attempt not found")
@@ -60,18 +64,25 @@ def submit_attempt(attempt_id: str):
     num_correct = 0
     items = []
 
+    # Track tag-level mastery
+    mastery_deltas = {}
+    XP_PER_CORRECT = 10
+    total_xp_earned = 0
+    tag_xp_updates = {}
+
     for q in quiz["questions"]:
         qid = q["id"]
         your = selections.get(qid)
-        correct = ANSWER_KEY[qid]
+        correct = ANSWER_KEY.get(qid)
         is_correct = (your == correct)
 
         by_id = {c["id"]: c["text"] for c in q["choices"]}
         your_text = by_id.get(your) if your else "—"
-        correct_text = by_id[correct]
+        correct_text = by_id.get(correct, "Unknown")
 
         if is_correct:
             num_correct += 1
+            total_xp_earned += XP_PER_CORRECT
 
         items.append({
             "questionId": qid,
@@ -84,8 +95,19 @@ def submit_attempt(attempt_id: str):
             "explanation": q.get("explanation"),
         })
 
+        # Calculate mastery delta for tags
+        tags = q.get("tags", [])
+        delta = 1 if is_correct else -1
+
+        if is_correct:
+            for t in tags:
+                tag_xp_updates[t] = tag_xp_updates.get(t, 0) + XP_PER_CORRECT
+
+        for t in tags:
+            mastery_deltas[t] = mastery_deltas.get(t, 0) + delta
+
     num_total = len(quiz["questions"])
-    score_percent = round((num_correct / num_total) * 100)
+    score_percent = round((num_correct / num_total) * 100) if num_total > 0 else 0
 
     result = {
         "attemptId": attempt_id,
@@ -97,11 +119,33 @@ def submit_attempt(attempt_id: str):
     }
 
     STORE.submit(attempt_id, result)
+
+    # Save the mastery scores + tag XP to Firestore
+    user_ref = db.collection("users").document(user_id)
+    updates = {"updatedAt": SERVER_TIMESTAMP}
+
+    # Existing mastery system
+    for tag, val in mastery_deltas.items():
+        updates[f"mastery_scores.{tag}"] = Increment(val)
+
+    # Tag XP system
+    for tag, xp in tag_xp_updates.items():
+        updates[f"tag_xp.{tag}"] = Increment(xp)
+
+    # Total XP
+    if total_xp_earned > 0:
+        updates["totalXP"] = Increment(total_xp_earned)
+
+    try:
+        user_ref.set(updates, merge=True)
+    except Exception as e:
+        print("Failed to save progress to Firebase:", e)
+
     return result
 
 
 @router.get("/attempt/{attempt_id}", response_model=AttemptResult)
-def get_attempt(attempt_id: str):
+def get_attempt(attempt_id: str, user_id: str = Depends(get_current_user_id)):
     att = STORE.get(attempt_id)
     if not att or not att["result"]:
         raise HTTPException(status_code=404, detail="Attempt not found or not submitted")

@@ -704,7 +704,7 @@ async def session_start(
     card = SCENARIOS.get(body.scenario_id) or list(SCENARIOS.values())[0]
     s = new_session(card, body.level, body.strictness)
 
-    # 🔥 CREATE chatAttempt
+    #  CREATE chatAttempt
     ref = (
         db.collection("users")
           .document(user_id)

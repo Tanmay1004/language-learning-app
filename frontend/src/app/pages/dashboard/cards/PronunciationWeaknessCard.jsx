@@ -120,7 +120,7 @@ export default function PronunciationWeaknessCard() {
         <Card
             sx={{
                 height: "100%",
-                minHeight: 420, // 🔥 MATCHES RecentActivity
+                minHeight: 420, //  MATCHES RecentActivity
                 background:
                     "linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0))",
                 backdropFilter: "blur(10px)",
@@ -157,7 +157,7 @@ export default function PronunciationWeaknessCard() {
                                     alignItems: "center",
                                     gap: 2,
                                     px: 1.6,
-                                    minHeight: 64, // 🔥 MATCH ROW HEIGHT
+                                    minHeight: 64, //  MATCH ROW HEIGHT
                                     borderRadius: 2,
                                     background: item.recent
                                         ? "rgba(239,83,80,0.1)"

@@ -198,7 +198,7 @@ ollama serve
 > Ollama must be running while using the chatbot.
 
 ---
-## 🔥 Firebase Setup (Authentication + Firestore)
+##  Firebase Setup (Authentication + Firestore)
 
 ### 1️⃣ Create Firebase Project
 

@@ -14,6 +14,10 @@ import RecentActivityCard from "./cards/RecentActivityCard";
 export default function Dashboard() {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
+
+    //  NEW STATE
+    const [tagXP, setTagXP] = useState({});
+
     const navigate = useNavigate();
 
     // -----------------------
@@ -27,6 +31,40 @@ export default function Dashboard() {
         return () => unsub();
     }, []);
 
+    // -----------------------
+    //  Fetch tag_xp from backend
+    // -----------------------
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if (!user) return;
+
+            try {
+                const token = await user.getIdToken();
+
+                const res = await fetch("http://localhost:8000/users/me", {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                const data = await res.json();
+
+                setTagXP(data.tag_xp || {});
+
+                //  DEBUG (MAIN GOAL)
+                console.log("TAG XP:", data.tag_xp);
+
+            } catch (err) {
+                console.error("Error fetching user data:", err);
+            }
+        };
+
+        fetchUserData();
+    }, [user]);
+
+    // -----------------------
+    // Loading state
+    // -----------------------
     if (loading) {
         return (
             <Box sx={{ p: 3 }}>
@@ -37,6 +75,9 @@ export default function Dashboard() {
         );
     }
 
+    // -----------------------
+    // Not logged in
+    // -----------------------
     if (!user) {
         return (
             <Box sx={{ p: 3, maxWidth: 600 }}>
@@ -55,6 +96,9 @@ export default function Dashboard() {
         );
     }
 
+    // -----------------------
+    // Main UI
+    // -----------------------
     return (
         <Box sx={{ p: 3 }}>
             <Typography variant="h5" sx={{ mb: 2 }}>
@@ -80,6 +124,5 @@ export default function Dashboard() {
                 <RecentActivityCard />
             </Box>
         </Box>
-
     );
 }

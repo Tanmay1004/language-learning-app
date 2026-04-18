@@ -19,7 +19,7 @@ export default function DashboardLayoutShell() {
             <>
               {props.children}
 
-              {/* 🔥 Streak */}
+              {/*  Streak */}
               <StreakIndicator />
 
               {/* XP */}

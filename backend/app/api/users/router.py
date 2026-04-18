@@ -21,7 +21,7 @@ def compute_next_streak(last_active: str | None, current_streak: int) -> int:
     except Exception:
         return 1
 
-    # 🔥 FIX: first-ever activity on same day
+    #  FIX: first-ever activity on same day
     if last == today:
         return current_streak if current_streak > 0 else 1
 
@@ -54,6 +54,8 @@ def get_me(user_id: str = Depends(get_current_user_id)):
             "level": 1,
             "streak": 0,
             "lastActiveDate": None,
+            "tag_xp": {},
+            "mastery_scores": {},
         }
 
     data = snap.to_dict() or {}
@@ -62,6 +64,8 @@ def get_me(user_id: str = Depends(get_current_user_id)):
         "level": data.get("level", 1),
         "streak": data.get("streak", 0),
         "lastActiveDate": data.get("lastActiveDate"),
+        "tag_xp": data.get("tag_xp", {}),
+        "mastery_scores": data.get("mastery_scores", {}),
     }
 
 
@@ -97,7 +101,7 @@ def add_xp(payload: dict, user_id: str = Depends(get_current_user_id)):
     })
 
 
-    # 🔥 FIX: only update streak on REAL activity
+    #  FIX: only update streak on REAL activity
     if source != "sync" and delta > 0:
         new_streak = compute_next_streak(last_active, prev_streak)
         last_active_to_set = today_str

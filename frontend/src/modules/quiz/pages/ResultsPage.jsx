@@ -68,7 +68,7 @@ export default function ResultsPage() {
     setTotalXP(newTotal);
     markAttemptAwarded(result.attemptId);
 
-    // 🔥 Backend sync + live streak update
+    //  Backend sync + live streak update
     syncXPToBackend({
       delta: earned,
       attemptId: result.attemptId,
@@ -266,7 +266,7 @@ export default function ResultsPage() {
         </Link>
         {sectionId && (
           <Link to={`../section/${sectionId}`} className="btn">
-            Back to Section
+            Back to Units
           </Link>
         )}
         <Link to=".." className="btn">
