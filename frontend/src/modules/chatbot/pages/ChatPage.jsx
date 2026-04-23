@@ -78,9 +78,9 @@ export default function ChatPage() {
       <header className="topbar">
         <div className="title">Conversational Chatbot <span className="tag">LLM-only</span></div>
         <div className="controls">
-          <select value={level} onChange={(e) => setLevel(e.target.value)} disabled={!!sessionId} title="Level">
+          {/* <select value={level} onChange={(e) => setLevel(e.target.value)} disabled={!!sessionId} title="Level">
             {["A1","A2","B1","B2","C1","C2"].map((l) => <option key={l}>{l}</option>)}
-          </select>
+          </select> */}
           <input type="number" step="0.1" min="0" max="1" value={strictness}
             onChange={(e) => setStrictness(Number(e.target.value))} disabled={!!sessionId} title="Strictness (0-1)" />
           <select

@@ -3,7 +3,7 @@ import { auth } from "../../auth/firebase";
 const API_BASE = "http://localhost:8000"; // backend origin
 
 export async function apiFetch(path, options = {}) {
-  // Wait for Firebase to finish its initial auth check 
+  // Wait for Firebase to finish its initial auth check
   // before assuming the user is not logged in.
   await auth.authStateReady();
 

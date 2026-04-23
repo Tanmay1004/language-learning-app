@@ -1,70 +1,86 @@
-import React from 'react';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import QuizIcon from '@mui/icons-material/BarChart';
-import ChatIcon from '@mui/icons-material/Chat';
-import MicIcon from '@mui/icons-material/Mic';
-import HomeIcon from '@mui/icons-material/Home';
-import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
-import LiveHelpIcon from '@mui/icons-material/LiveHelp';
-import InfoIcon from '@mui/icons-material/Info';
+import React from "react";
+
+import HomeIcon from "@mui/icons-material/Home";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
+
+import MicIcon from "@mui/icons-material/Mic";
+import QuizIcon from "@mui/icons-material/BarChart";
+import ChatIcon from "@mui/icons-material/Chat";
+
+import LiveHelpIcon from "@mui/icons-material/LiveHelp";
+import InfoIcon from "@mui/icons-material/Info";
 
 export const NAVIGATION = [
+  // =========================
+  // MAIN
+  // =========================
   {
-    kind: 'header',
-    title: 'Personal',
+    kind: "header",
+    title: "Main",
   },
   {
-    segment: 'homepage',
-    title: 'Home',
+    segment: "homepage",
+    title: "Home",
     icon: <HomeIcon />,
   },
   {
-    segment: 'dashboard',
-    title: 'Dashboard',
+    segment: "dashboard",
+    title: "Dashboard",
     icon: <DashboardIcon />,
   },
   {
-    segment: 'badges',
-    title: 'Badges',
+    segment: "badges",
+    title: "Achievements",
     icon: <LocalPoliceIcon />,
   },
+
   {
-    kind: 'divider',
+    kind: "divider",
+  },
+
+  // =========================
+  // LEARNING
+  // =========================
+  {
+    kind: "header",
+    title: "Learning",
   },
   {
-    kind: 'header',
-    title: 'Learning Options',
-  },
-  {
-    segment: 'pronunciation',
-    title: 'Pronunciation',
+    segment: "pronunciation",
+    title: "Pronunciation",
     icon: <MicIcon />,
   },
   {
-    segment: 'quiz',
-    title: 'Quiz',
+    segment: "quiz",
+    title: "Quizzes",
     icon: <QuizIcon />,
   },
   {
-    segment: 'chat',
-    title: 'Conversation',
+    segment: "chat",
+    title: "Practice Chat",
     icon: <ChatIcon />,
   },
+
   {
-    kind: 'divider',
+    kind: "divider",
+  },
+
+  // =========================
+  // SUPPORT
+  // =========================
+  {
+    kind: "header",
+    title: "Support",
   },
   {
-    kind: 'header',
-    title: 'App Info',
-  },
-  {
-    segment: 'faq',
-    title: 'FAQs',
+    segment: "faq",
+    title: "Help Center",
     icon: <LiveHelpIcon />,
   },
   {
-    segment: 'about-us',
-    title: 'About Us',
+    segment: "about-us",
+    title: "About",
     icon: <InfoIcon />,
   },
 ];

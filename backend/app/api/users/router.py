@@ -112,13 +112,13 @@ def add_xp(payload: dict, user_id: str = Depends(get_current_user_id)):
     print("NEW STREAK:", new_streak)
 
 
-    user_ref.update({
+    user_ref.set({
         "totalXP": Increment(delta),
         "level": new_level,
         "streak": new_streak,
         "lastActiveDate": last_active_to_set,
         "updatedAt": SERVER_TIMESTAMP,
-    })
+    }, merge=True)
 
     return {
         "totalXP": new_xp,

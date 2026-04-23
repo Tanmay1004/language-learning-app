@@ -470,3 +470,28 @@ async def score_audio(
 
 
     return JSONResponse(payload)
+
+
+@router.get("/recent")
+def get_recent_attempts(user_id: str = Depends(get_current_user_id)):
+    user_ref = (
+        db.collection("users")
+        .document(user_id)
+        .collection("pronunciationAttempts")
+        .order_by("createdAt", direction="DESCENDING")
+        .limit(10)
+        .stream()
+    )
+
+    attempts = []
+
+    for doc in user_ref:
+        data = doc.to_dict()
+        attempts.append({
+            "id": doc.id,
+            "label": data.get("label"),
+            "overall": data.get("overall"),
+            "reference": data.get("reference"),
+        })
+
+    return {"attempts": attempts}

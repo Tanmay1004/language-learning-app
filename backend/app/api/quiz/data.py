@@ -1,3 +1,4 @@
+
 # Sections
 SECTIONS = {
     "sections": [
@@ -639,3 +640,12 @@ if diagnostics_units:
         "section": {"id": "sec_diagnostics", "title": "Placement & Diagnostics"},
         "units": diagnostics_units
     }
+
+
+
+def get_section_id_by_unit(unit_id: str) -> str:
+    for section_id, section_data in UNITS_BY_SECTION.items():
+        for unit in section_data.get("units", []):
+            if unit["id"] == unit_id:
+                return section_id
+    return "unknown"

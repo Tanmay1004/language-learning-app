@@ -9,6 +9,12 @@ from auth.firebase_auth import get_current_user_id
 from firebase.firebase_admin import db
 from firebase_admin.firestore import Increment, SERVER_TIMESTAMP
 
+# ✅ ADD THIS
+from services.quiz_analytics import record_attempt, update_quiz_stats_transactional
+
+from ..data import get_section_id_by_unit
+
+
 router = APIRouter(tags=["attempts"])
 
 
@@ -32,7 +38,6 @@ def upsert_answer(attempt_id: str, payload: AnswerUpsert):
     unit_id = att["unitId"]
     quiz = QUIZ_BY_UNIT[unit_id]
 
-    # Validate question → choice relationship
     q = next((qq for qq in quiz["questions"] if qq["id"] == payload.questionId), None)
     if not q:
         raise HTTPException(status_code=422, detail="Question not in this unit")
@@ -53,7 +58,6 @@ def submit_attempt(attempt_id: str, user_id: str = Depends(get_current_user_id))
     if not att:
         raise HTTPException(status_code=404, detail="Attempt not found")
 
-    # Idempotent submit
     if att["result"] is not None:
         return att["result"]
 
@@ -64,7 +68,6 @@ def submit_attempt(attempt_id: str, user_id: str = Depends(get_current_user_id))
     num_correct = 0
     items = []
 
-    # Track tag-level mastery
     mastery_deltas = {}
     XP_PER_CORRECT = 10
     total_xp_earned = 0
@@ -95,7 +98,6 @@ def submit_attempt(attempt_id: str, user_id: str = Depends(get_current_user_id))
             "explanation": q.get("explanation"),
         })
 
-        # Calculate mastery delta for tags
         tags = q.get("tags", [])
         delta = 1 if is_correct else -1
 
@@ -120,19 +122,15 @@ def submit_attempt(attempt_id: str, user_id: str = Depends(get_current_user_id))
 
     STORE.submit(attempt_id, result)
 
-    # Save the mastery scores + tag XP to Firestore
     user_ref = db.collection("users").document(user_id)
     updates = {"updatedAt": SERVER_TIMESTAMP}
 
-    # Existing mastery system
     for tag, val in mastery_deltas.items():
         updates[f"mastery_scores.{tag}"] = Increment(val)
 
-    # Tag XP system
     for tag, xp in tag_xp_updates.items():
         updates[f"tag_xp.{tag}"] = Increment(xp)
 
-    # Total XP
     if total_xp_earned > 0:
         updates["totalXP"] = Increment(total_xp_earned)
 
@@ -140,6 +138,37 @@ def submit_attempt(attempt_id: str, user_id: str = Depends(get_current_user_id))
         user_ref.set(updates, merge=True)
     except Exception as e:
         print("Failed to save progress to Firebase:", e)
+
+    # ✅ ADD THIS BLOCK (analytics collections)
+    tag_results = {}
+    for q in quiz["questions"]:
+        tags = q.get("tags", [])
+        is_correct = (selections.get(q["id"]) == ANSWER_KEY.get(q["id"]))
+
+        for t in tags:
+            if t not in tag_results:
+                tag_results[t] = {"correct": 0, "total": 0}
+
+            tag_results[t]["total"] += 1
+            if is_correct:
+                tag_results[t]["correct"] += 1
+
+    record_attempt(
+        user_id=user_id,
+        attempt_id=attempt_id,
+        unit_id=unit_id,
+        section_id = get_section_id_by_unit(unit_id),
+        result=result,
+        tag_results=tag_results,
+        xp_earned=total_xp_earned
+    )
+
+    update_quiz_stats_transactional(
+        user_id=user_id,
+        unit_id=unit_id,
+        section_id = get_section_id_by_unit(unit_id),
+        score=score_percent
+    )
 
     return result
 
