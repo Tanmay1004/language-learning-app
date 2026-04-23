@@ -276,16 +276,10 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // =========================
-    // Users root document
-    // =========================
     match /users/{userId} {
       allow read, write: if request.auth != null
                          && request.auth.uid == userId;
 
-      // =========================
-      // Chatbot analytics
-      // =========================
       match /chatErrors/{docId} {
         allow read, write: if request.auth != null
                            && request.auth.uid == userId;
@@ -296,15 +290,28 @@ service cloud.firestore {
                            && request.auth.uid == userId;
       }
 
-      // =========================
-      // Pronunciation (already working)
-      // =========================
       match /pronunciationAttempts/{attemptId} {
         allow read, write: if request.auth != null
                            && request.auth.uid == userId;
       }
 
       match /pronunciationStats/{docId} {
+        allow read, write: if request.auth != null
+                           && request.auth.uid == userId;
+      }
+
+      // 🔥 ADD THESE
+      match /quizAttempts/{attemptId} {
+        allow read, write: if request.auth != null
+                           && request.auth.uid == userId;
+      }
+
+      match /quizStats/{docId} {
+        allow read, write: if request.auth != null
+                           && request.auth.uid == userId;
+      }
+
+      match /tagMastery/{tagId} {
         allow read, write: if request.auth != null
                            && request.auth.uid == userId;
       }
